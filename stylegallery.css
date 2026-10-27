@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+
+/* Fixed: Remove the dot and use the same gradient as your first page */
+body {
+  background: linear-gradient(100deg, #ff5252, #ffbaba);
+  margin: 0;
+  overflow: hidden;
+  /* Prevents scrolling issues */
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+/* Hearts background - BEHIND everything */
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.slider-container {
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.slider-images {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  position: relative;
+  z-index: 2;
+}
+
+.slider-images img {
+  width: fit-content;
+  height: fit-content;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.slider-img {
+  width: 110px;
+  height: 450px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition:
+    width 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+    height 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-img:hover,
+.slider-img.active {
+  width: fit-content;
+  height: fit-content;
+  box-shadow: 0 8px 24px rgba(255, 82, 82, 0.25);
+  z-index: 4;
+}
+
+/* Only the .active class is set initially on .have-i-img */
+.have-i-img.active {
+  width: 320px;
+}
+
+.slider-img .details h2,
+.slider-img .details p {
+
+  transform: rotate(180deg);
+  /* Makes text go upward */
+  text-transform: uppercase;
+  transition: 0.7s ease;
+  text-align: center;
+  margin: 0;
+  display: block;
+}
+
+/* Horizontal when active or hovered */
+.slider-img.active .details h2,
+.slider-img.active .details p,
+.slider-img:hover .details h2,
+.slider-img:hover .details p {
+  writing-mode: horizontal-tb;
+  transform: rotate(0deg);
+
+
+  text-align: center;
+  /* If you want horizontal centering, you can keep justify-content: center; on .details */
+}
+
+.slider-img .details h2 {
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  /* Prevent accidental interaction while hidden */
+}
+
+.slider-img:hover .details h2 {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.slider-images .slider-img:first-child,
+.slider-images .slider-img:last-child {
+  height: 320px;
+}
+
+.slider-images .slider-img:nth-child(2),
+.slider-images .slider-img:nth-child(6) {
+  height: 400px;
+}
+
+.slider-images .slider-img:nth-child(3),
+.slider-images .slider-img:nth-child(4),
+.slider-images .slider-img:nth-child(5) {
+  height: 450px;
+}
+
+h1 {
+  font-family: "Jost", sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fa51ef;
+  position: absolute;
+  top: 50%;
+  left: -5%;
+  transform: rotate(270deg);
+  transition: 0.7s ease;
+  text-shadow: 0px 0px 10px #4a0404,
+                   0px 0px 10px #4a0404;
+}
+
+
+
+
+.details {
+  position: absolute;
+  bottom: 43px;
+  left: 43px;
+}
+
+.slider-img .details {
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+}
+
+.details .btn-group {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.details h2 {
+  font-family: "Jost", sans-serif;
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: left;
+  line-height: 44px;
+  text-align: center;
+  color: #fa51ef;
+  text-transform: uppercase;
+  transition: 0.7s ease;
+  display: none;
+  text-shadow: 0px 0px 10px #4a0404,
+                   0px 0px 10px #4a0404;
+}
+
+.details p {
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+  line-height: 33px;
+  text-align: left;
+  color: #fa51ef;
+  text-transform: uppercase;
+  transition: 0.7s ease;
+  display: none;
+}
+
+.slider-img.active {
+  width: 320px !important;
+  height: 450px !important;
+  z-index: 4;
+}
+
+.slider-img.active h1 {
+  display: none;
+}
+
+.slider-img.active .details p,
+.slider-img.active .details h1 {
+  display: block;
+}
+
+.gallery-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  z-index: 10;
+  position: relative;
+}
+
+.btn {
+  background: linear-gradient(0deg, #ff2a2a, #ffbaba);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+
+
+/*before hover*/
+.have-i-img .center-have-i {
+  font-family: "Jost", sans-serif;
+  font-size: 32px;
+  font-weight: bolder;
+  text-align: left;
+  line-height: 44px;
+  text-align: center;
+  color: #fa51ef;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 10px #4a0404,
+                   0px 0px 15px #4a0404;
+
+}
+
+ 
+.slider-images:hover .have-i-img .center-have-i,
+.slider-img:hover~.have-i-img .center-have-i,
+.have-i-img:hover .center-have-i {
+  display: none;
+}
+
+ 
+.have-i-img .bottom-have-i {
+  display: none;
+}
+
+/* hovered/active */
+.have-i-img:hover .bottom-have-i,
+.have-i-img.active .bottom-have-i {
+  font-family: "Jost", sans-serif;
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: left;
+  line-height: 44px;
+  text-align: center;
+  color: #fa51ef;
+  text-transform: uppercase;
+  
+  display: block;
+   text-shadow: 0px 0px 10px #4a0404,
+                   0px 0px 15px #4a0404;
+
+}
+
+.slider-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: object-fit 0.3s, width 0.7s, height 0.7s;
+}
+
+.slider-img:hover img,
+.slider-img.active img {
+  object-fit: contain;
+}
+
+/* ===== Phones, tablets, small laptops ===== */
+@media (max-width: 1150px) {
+  .slider-container {
+    height: 100vh;
+    padding: 0 12px;
+    --gap: clamp(4px, 1.6vw, 21px);
+    --active: min(40vw, 320px);
+    --h: min(60vh, 450px);
+    --collapsed: min(110px, calc((100vw - 24px - 6 * var(--gap) - var(--active)) / 6));
+  }
+
+  @supports (height: 100dvh) {
+    .slider-container {
+      height: 100dvh;
+      --h: min(60dvh, 450px);
+    }
+  }
+
+  .slider-images { gap: var(--gap); }
+
+  .slider-images .slider-img {
+    width: var(--collapsed) !important;
+    height: var(--h) !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .slider-images .slider-img:nth-child(1),
+  .slider-images .slider-img:nth-child(7) { height: calc(var(--h) * 0.72) !important; }
+  .slider-images .slider-img:nth-child(2),
+  .slider-images .slider-img:nth-child(6) { height: calc(var(--h) * 0.89) !important; }
+  .slider-images .slider-img.active {
+    width: var(--active) !important;
+    height: var(--h) !important;
+  }
+
+  .slider-img h1 {
+    font-size: clamp(11px, 3.4vw, 15px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(270deg);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 6px #4a0404;
+  }
+
+  .slider-img .details { bottom: 18px; }
+  .details h2,
+  .have-i-img .center-have-i,
+  .have-i-img:hover .bottom-have-i,
+  .have-i-img.active .bottom-have-i {
+    font-size: clamp(16px, 5.2vw, 26px);
+    line-height: 1.1;
+  }
+  .have-i-img:not(.active) .center-have-i { display: none; }
+  .slider-images .slider-img.active:not(.have-i-img) .details h2 { opacity: 1; }
+
+  .slider-img.active img,
+  .slider-img:hover img { object-fit: cover; }
+
+  .gallery-btn-group { margin-top: 20px; gap: 12px; }
+  .gallery-btn-group .btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    touch-action: manipulation;
+  }
+}

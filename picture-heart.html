@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a0615" />
+  <title>i've made this only for you 💗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Jost:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #fff;
+      overflow: hidden;
+      touch-action: manipulation;
+      background: radial-gradient(120% 90% at 50% 0%, #8c1243 0%, #4a0a26 45%, #1a030d 100%);
+      background-attachment: fixed;
+    }
+    body.fade-out { opacity: 0; transition: opacity 0.6s; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- ambient background ---------- */
+    .orb {
+      position: fixed; z-index: 0; border-radius: 50%; filter: blur(70px); opacity: 0.4; pointer-events: none;
+      animation: drift 14s ease-in-out infinite alternate;
+    }
+    .orb.a { width: 46vmax; height: 46vmax; left: -14vmax; top: -12vmax; background: #ff2d6f; }
+    .orb.b { width: 40vmax; height: 40vmax; right: -12vmax; bottom: -14vmax; background: #b3124f; animation-delay: -6s; }
+    @keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(4vmax, 3vmax) scale(1.12); } }
+
+    /* soft glow behind the heart (it pulses with the heartbeat) */
+    #aura {
+      position: fixed; z-index: 1; left: 0; top: 0; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(closest-side, rgba(255, 45, 111, 0.55), rgba(255, 45, 111, 0.18) 55%, transparent 100%);
+      transform: translate(-50%, -50%); opacity: 0; transition: opacity 2s ease 0.6s;
+    }
+    #aura.on { opacity: 1; }
+
+    #c { position: fixed; inset: 0; z-index: 2; display: block; }
+
+    /* ---------- text inside the heart ---------- */
+    #caption {
+      position: fixed; z-index: 4; left: 0; top: 0; transform: translate(-50%, -50%);
+      text-align: center; pointer-events: none;
+      font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-weight: 700; line-height: 1.12;
+      text-shadow: 0 0 24px rgba(255, 45, 111, 0.9), 0 2px 14px rgba(0, 0, 0, 0.4);
+      opacity: 0; animation: capIn 2.2s ease 1.2s forwards;
+    }
+    @keyframes capIn { from { opacity: 0; filter: blur(8px); } to { opacity: 1; filter: blur(0); } }
+
+    /* ---------- optional photos (only appear if the image files exist) ---------- */
+    #photos { position: fixed; inset: 0; z-index: 3; pointer-events: none; }
+    .photo {
+      position: absolute; width: 70px; height: 70px; border-radius: 16px; overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 0 22px rgba(255, 45, 111, 0.55), 0 14px 30px rgba(0, 0, 0, 0.35);
+      opacity: 0; transition: left 3s ease, top 3s ease, opacity 2s ease;
+    }
+    .photo.loaded { opacity: 1; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo.loop { animation: floaty 12s ease-in-out infinite alternate; }
+    .photo:nth-child(3n) { animation-duration: 15s; }
+    .photo:nth-child(4n) { animation-duration: 18s; }
+    @keyframes floaty { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(-10px) rotate(2.5deg); } }
+
+    /* ---------- button ---------- */
+    .footer {
+      position: fixed; z-index: 6; left: 0; right: 0; bottom: calc(14px + env(safe-area-inset-bottom));
+      display: flex; justify-content: center; padding: 0 16px;
+      opacity: 0; animation: fadeUp 1.2s ease 2.6s forwards;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    .nav-btn {
+      position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 34px; border-radius: 999px; overflow: hidden; isolation: isolate;
+      font-weight: 600; font-size: 1.02rem; letter-spacing: 0.05em; color: #fff;
+      background: linear-gradient(135deg, #ff7aa2 0%, #ff2d6f 60%, #d6124f 100%);
+      box-shadow: 0 12px 38px rgba(255, 45, 111, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      touch-action: manipulation;
+    }
+    .nav-btn::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+      transform: translateX(-120%); animation: shine 3.4s ease-in-out 4s infinite;
+    }
+    .nav-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 48px rgba(255, 45, 111, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.5); }
+    .nav-btn:active { transform: scale(0.96); }
+    .nav-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .nav-btn svg { width: 18px; height: 18px; fill: #fff; animation: beat 1.5s ease-in-out infinite; }
+    @keyframes shine { 0% { transform: translateX(-120%); } 45%, 100% { transform: translateX(120%); } }
+    @keyframes beat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.2); } 30% { transform: scale(1); } 45% { transform: scale(1.12); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .orb, .nav-btn svg, .photo.loop { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+
+  <div id="aura"></div>
+  <canvas id="c"></canvas>
+  <div id="photos"></div>
+  <div id="caption">i've made this only for you</div>
+
+  <div class="footer">
+    <a href="finalmessages.html" class="nav-btn">
+      Go to Final Message
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* Pictures are OPTIONAL. The heart is made of glowing particles, so the page
+         looks complete with no images at all. If you add files named like the ones
+         below (same folder), they appear around the heart automatically. */
+      var imageFiles = [
+        'trix1.jpg', 'trix2.jpg', 'trix3.jpg', 'trix4.jpg', 'trix5.jpg',
+        'trix6.jpg', 'trix7.jpg', 'trix8.jpg', 'trix9.jpg', 'trix10.jpg'
+      ];
+
+      var TAU = Math.PI * 2;
+      var canvas = document.getElementById('c');
+      var ctx = canvas.getContext('2d');
+      var aura = document.getElementById('aura');
+      var caption = document.getElementById('caption');
+      var photosEl = document.getElementById('photos');
+      var footer = document.querySelector('.footer');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var W = 0, H = 0, dpr = 1, S = 10, cx = 0, cy = 0;
+      var hasPhotos = false;
+      var rand = function (a, b) { return a + Math.random() * (b - a); };
+      var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+
+      var HEART_PATH = new Path2D('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+
+      function heartXY(t) {
+        return {
+          x: 16 * Math.pow(Math.sin(t), 3),
+          y: 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)
+        };
+      }
+
+      /* ---------- layout ---------- */
+      var stars = [], risers = [];
+
+      function layout() {
+        W = window.innerWidth; H = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(W * dpr);
+        canvas.height = Math.round(H * dpr);
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        // keep the heart clear of the button at the bottom
+        var padTop = 18;
+        var availH = H - footer.offsetHeight - 34 - padTop;
+        S = Math.min((W * 0.86) / 32, availH / 29.5);
+        if (hasPhotos) S *= 0.9;
+        S = Math.max(S, 4);
+        cx = W / 2;
+        cy = padTop + (availH - 29.5 * S) / 2 + 12.5 * S;
+
+        var aSize = 36 * S;
+        aura.style.width = aSize + 'px';
+        aura.style.height = aSize + 'px';
+        aura.style.left = cx + 'px';
+        aura.style.top = (cy + 2 * S) + 'px';
+
+        caption.style.left = cx + 'px';
+        caption.style.top = (cy + 0.9 * S) + 'px';
+        caption.style.width = (15 * S) + 'px';
+        caption.style.fontSize = clamp(1.75 * S, 20, 54) + 'px';
+
+        stars = [];
+        var n = Math.round(clamp(W * H / 9000, 30, 120));
+        for (var i = 0; i < n; i++) stars.push({ x: rand(0, W), y: rand(0, H), r: rand(0.4, 1.5), ph: rand(0, TAU), sp: rand(0.8, 2.4) });
+
+        if (!risers.length) {
+          for (var j = 0; j < 22; j++) risers.push(newRiser(true));
+        }
+      }
+
+      function newRiser(anywhere) {
+        return {
+          x: rand(0, W || window.innerWidth),
+          y: anywhere ? rand(0, H || window.innerHeight) : (H || window.innerHeight) + 30,
+          size: rand(7, 18), speed: rand(14, 38), a: rand(0.1, 0.32), ph: rand(0, TAU), sway: rand(6, 22)
+        };
+      }
+
+      /* ---------- particles that form the heart ---------- */
+      var EDGE_COLORS = ['#ff2d6f', '#ff6b9a', '#ff8fb1', '#ffffff', '#ffd6e4'];
+      var FILL_COLORS = ['#ff2d6f', '#d6124f', '#ff4d85'];
+      var groups = [];
+      var parts = [];
+
+      function makeParticles() {
+        var N = Math.round(clamp(S * S * 2.4, 800, 2200));
+        groups = [];
+        var map = {};
+        function group(color, a) {
+          var key = color + a;
+          if (!map[key]) { map[key] = { c: color, a: a, list: [] }; groups.push(map[key]); }
+          return map[key];
+        }
+        parts = [];
+        for (var i = 0; i < N; i++) {
+          var edge = Math.random() < 0.5;
+          var t = Math.random() * TAU;
+          var k = edge ? 0.965 + Math.random() * 0.05 : Math.sqrt(Math.random()) * 0.92;
+          var h = heartXY(t);
+          var p = {
+            hx: h.x * k + (edge ? rand(-0.25, 0.25) : 0),
+            hy: h.y * k + (edge ? rand(-0.25, 0.25) : 0),
+            x: rand(0, W), y: rand(0, H), vx: 0, vy: 0,
+            r: edge ? rand(0.9, 2.1) : rand(0.7, 1.7),
+            ph: rand(0, TAU),
+            delay: rand(0, 1.6),
+            spark: edge && Math.random() < 0.04
+          };
+          var g = edge
+            ? group(EDGE_COLORS[Math.floor(Math.random() * EDGE_COLORS.length)], 0.95)
+            : group(FILL_COLORS[Math.floor(Math.random() * FILL_COLORS.length)], 0.5);
+          g.list.push(p);
+          parts.push(p);
+        }
+      }
+
+      /* ---------- pointer: push particles away + pop little hearts ---------- */
+      var ptr = { x: -999, y: -999, on: false };
+      var pops = [];
+
+      function shock(x, y) {
+        var R = 230, R2 = R * R;
+        for (var i = 0; i < parts.length; i++) {
+          var p = parts[i], dx = p.x - x, dy = p.y - y, d2 = dx * dx + dy * dy;
+          if (d2 < R2) {
+            var d = Math.sqrt(d2) || 1, f = (1 - d / R) * 9;
+            p.vx += dx / d * f; p.vy += dy / d * f;
+          }
+        }
+        for (var j = 0; j < 12; j++) {
+          pops.push({ x: x, y: y, vx: rand(-90, 90), vy: rand(-190, -60), size: rand(10, 24), life: 1, rot: rand(-0.5, 0.5) });
+        }
+      }
+
+      window.addEventListener('pointerdown', function (e) {
+        if (e.target.closest && e.target.closest('.footer')) return;
+        ptr.x = e.clientX; ptr.y = e.clientY; ptr.on = true;
+        if (!reduce) shock(e.clientX, e.clientY);
+      });
+      window.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'mouse' || e.buttons) { ptr.x = e.clientX; ptr.y = e.clientY; ptr.on = true; }
+      });
+      window.addEventListener('pointerup', function (e) { if (e.pointerType !== 'mouse') ptr.on = false; });
+      window.addEventListener('pointercancel', function () { ptr.on = false; });
+      window.addEventListener('blur', function () { ptr.on = false; });
+      document.addEventListener('mouseleave', function () { ptr.on = false; });
+
+      function drawHeart(x, y, size, alpha, color, rot) {
+        var s = size / 24;
+        ctx.save();
+        ctx.translate(x, y);
+        if (rot) ctx.rotate(rot);
+        ctx.scale(s, s);
+        ctx.translate(-12, -12);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = color;
+        ctx.fill(HEART_PATH);
+        ctx.restore();
+      }
+
+      /* ---------- main loop ---------- */
+      var K = 0.012, DAMP = 0.9;
+      var last = performance.now(), time = 0, auraOn = false;
+
+      function frame(now) {
+        requestAnimationFrame(frame);
+        var dt = Math.min((now - last) / 1000, 0.05);
+        last = now;
+        time += dt;
+        var f = dt * 60;
+
+        // fade the previous frame (soft trails) then draw additively
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = 'rgba(0,0,0,0.32)';
+        ctx.fillRect(0, 0, W, H);
+        ctx.globalCompositeOperation = 'lighter';
+
+        // twinkling stars
+        ctx.fillStyle = '#fff';
+        for (var s = 0; s < stars.length; s++) {
+          var st = stars[s];
+          ctx.globalAlpha = 0.15 + 0.5 * Math.max(0, Math.sin(time * st.sp + st.ph));
+          ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, TAU); ctx.fill();
+        }
+
+        // little hearts floating up in the background
+        for (var r = 0; r < risers.length; r++) {
+          var rs = risers[r];
+          rs.y -= rs.speed * dt;
+          var rx = rs.x + Math.sin(time * 0.8 + rs.ph) * rs.sway;
+          if (rs.y < -30) { risers[r] = newRiser(false); continue; }
+          drawHeart(rx, rs.y, rs.size, rs.a, '#ff8fb1', Math.sin(time + rs.ph) * 0.3);
+        }
+
+        // heartbeat (double pulse), eases in after the heart has formed
+        var amp = reduce ? 0.3 : clamp((time - 3) / 1.5, 0, 1);
+        var ph = (time % 1.5) / 1.5;
+        var b = Math.max(Math.exp(-Math.pow((ph - 0.08) / 0.05, 2)), 0.7 * Math.exp(-Math.pow((ph - 0.27) / 0.06, 2)));
+        var sc = 1 + 0.06 * b * amp;
+
+        if (!auraOn && time > 0.2) { aura.classList.add('on'); auraOn = true; }
+        aura.style.transform = 'translate(-50%, -50%) scale(' + (1 + 0.1 * b * amp) + ')';
+
+        // physics
+        var pr = (window.innerWidth < 600 ? 80 : 110), pr2 = pr * pr, damp = Math.pow(DAMP, f);
+        for (var i = 0; i < parts.length; i++) {
+          var p = parts[i];
+          if (time < p.delay) {
+            p.x += Math.sin(time * 0.9 + p.ph) * 0.25;
+            p.y += Math.cos(time * 0.8 + p.ph) * 0.25;
+            continue;
+          }
+          var tx = cx + p.hx * S * sc + Math.sin(time * 1.3 + p.ph) * 0.7;
+          var ty = cy - p.hy * S * sc + Math.cos(time * 1.1 + p.ph) * 0.7;
+          p.vx += (tx - p.x) * K * f;
+          p.vy += (ty - p.y) * K * f;
+          if (ptr.on && !reduce) {
+            var dx = p.x - ptr.x, dy = p.y - ptr.y, d2 = dx * dx + dy * dy;
+            if (d2 < pr2) {
+              var d = Math.sqrt(d2) || 1, force = (1 - d / pr) * 2.4 * f;
+              p.vx += dx / d * force; p.vy += dy / d * force;
+            }
+          }
+          p.vx *= damp; p.vy *= damp;
+          p.x += p.vx * f; p.y += p.vy * f;
+        }
+
+        // draw particles, batched per colour
+        for (var g = 0; g < groups.length; g++) {
+          var grp = groups[g], list = grp.list;
+          ctx.globalAlpha = grp.a;
+          ctx.fillStyle = grp.c;
+          ctx.beginPath();
+          for (var j = 0; j < list.length; j++) {
+            var q = list[j];
+            var rad = q.r * (0.8 + 0.4 * Math.sin(time * 2.2 + q.ph));
+            ctx.moveTo(q.x + rad, q.y);
+            ctx.arc(q.x, q.y, rad, 0, TAU);
+          }
+          ctx.fill();
+        }
+
+        // sparkles on the outline
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        for (var m = 0; m < parts.length; m++) {
+          var sp = parts[m];
+          if (!sp.spark) continue;
+          var tw = Math.max(0, Math.sin(time * 3 + sp.ph));
+          if (tw < 0.05) continue;
+          var l = 2 + 6 * tw;
+          ctx.globalAlpha = tw;
+          ctx.beginPath();
+          ctx.moveTo(sp.x - l, sp.y); ctx.lineTo(sp.x + l, sp.y);
+          ctx.moveTo(sp.x, sp.y - l); ctx.lineTo(sp.x, sp.y + l);
+          ctx.stroke();
+        }
+
+        // hearts that pop where you tap
+        for (var n = pops.length - 1; n >= 0; n--) {
+          var pp = pops[n];
+          pp.life -= dt * 0.7;
+          if (pp.life <= 0) { pops.splice(n, 1); continue; }
+          pp.vy += 40 * dt;
+          pp.x += pp.vx * dt; pp.y += pp.vy * dt;
+          drawHeart(pp.x, pp.y, pp.size, clamp(pp.life, 0, 1) * 0.9, '#ff8fb1', pp.rot);
+        }
+
+        ctx.globalAlpha = 1;
+      }
+
+      /* ---------- optional photos ---------- */
+      var photoEls = [];
+
+      function loadImages() {
+        return Promise.all(imageFiles.map(function (src) {
+          return new Promise(function (res) {
+            var im = new Image();
+            im.onload = function () { res(src); };
+            im.onerror = function () { res(null); };
+            setTimeout(function () { res(null); }, 5000);
+            im.src = src;
+          });
+        })).then(function (list) { return list.filter(Boolean); });
+      }
+
+      function placePhotos(initial) {
+        var size = clamp(Math.round(S * 3), 36, 84);
+        photoEls.forEach(function (el, i) {
+          el.style.width = size + 'px';
+          el.style.height = size + 'px';
+          el.style.borderRadius = Math.round(size * 0.22) + 'px';
+          var pt = heartXY(TAU * i / photoEls.length);
+          var left = cx + pt.x * S - size / 2;
+          var top = cy - pt.y * S - size / 2;
+          if (initial) {
+            el.style.left = rand(0, Math.max(0, W - size)) + 'px';
+            el.style.top = rand(0, Math.max(0, H - size)) + 'px';
+            setTimeout(function () {
+              el.classList.add('loaded', 'loop');
+              el.style.left = left + 'px';
+              el.style.top = top + 'px';
+            }, 2200 + i * 120);
+          } else {
+            el.style.transition = 'none';
+            el.style.left = left + 'px';
+            el.style.top = top + 'px';
+            void el.offsetWidth;
+            el.style.transition = '';
+          }
+        });
+      }
+
+      function buildPhotos(srcs) {
+        hasPhotos = true;
+        layout();
+        var total = 20;
+        for (var i = 0; i < total; i++) {
+          var d = document.createElement('div');
+          d.className = 'photo';
+          var im = document.createElement('img');
+          im.src = srcs[i % srcs.length];
+          im.alt = '';
+          d.appendChild(im);
+          photosEl.appendChild(d);
+          photoEls.push(d);
+        }
+        requestAnimationFrame(function () { placePhotos(true); });
+      }
+
+      /* ---------- start ---------- */
+      layout();
+      makeParticles();
+      requestAnimationFrame(function (t) { last = t; frame(t); });
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { layout(); if (hasPhotos) placePhotos(false); });
+      }
+
+      loadImages().then(function (srcs) { if (srcs.length) buildPhotos(srcs); });
+
+      var lastW = window.innerWidth, lastH = window.innerHeight, rt;
+      window.addEventListener('resize', function () {
+        clearTimeout(rt);
+        rt = setTimeout(function () {
+          // phones fire "resize" when the address bar hides/shows -> ignore tiny changes
+          if (Math.abs(window.innerWidth - lastW) < 30 && Math.abs(window.innerHeight - lastH) < 120) return;
+          lastW = window.innerWidth; lastH = window.innerHeight;
+          layout();
+          if (hasPhotos) placePhotos(false);
+        }, 200);
+      });
+
+      /* ---------- page transition ---------- */
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var href = this.getAttribute('href');
+          if (href && href.charAt(0) !== '#') {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(function () { window.location.href = href; }, 600);
+          }
+        });
+      });
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) document.body.classList.remove('fade-out');
+      });
+    })();
+  </script>
+</body>
+
+</html>

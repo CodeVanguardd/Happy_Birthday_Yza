@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>HAPPY BIRTHDAY!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a0615" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./stylebday.css" />
+</head>
+
+<body>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div class="float" aria-hidden="true"></div>
+
+  <main class="scene">
+    <header class="title">
+      <h1>HAPPY BIRTHDAYYY, Yza!</h1>
+    </header>
+
+    <aside class="steps">
+      <h3>🎂 To do:</h3>
+      <div class="step"><span class="num">1</span><span class="txt">Click on the cake to add candles 🕯️</span></div>
+      <div class="step"><span class="num">2</span><span class="txt">Blow into your microphone to blow them out 💨</span></div>
+      <div class="step"><span class="num">3</span><span class="txt">Wait for it ⏱️</span></div>
+      <div class="step"><span class="num">4</span><span class="txt">Click the button to proceed ✨</span></div>
+    </aside>
+
+    <section class="stage">
+      <div class="cake" role="button" tabindex="0" aria-label="Click the cake to add a candle">
+        <svg class="cake-svg" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="gSideBot" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#c92f63"/><stop offset=".3" stop-color="#ff7aa2"/><stop offset=".62" stop-color="#ff6b97"/><stop offset="1" stop-color="#b92458"/>
+    </linearGradient>
+    <linearGradient id="gSideTop" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#f08fb0"/><stop offset=".32" stop-color="#ffe3ec"/><stop offset=".65" stop-color="#ffc7d9"/><stop offset="1" stop-color="#e57aa0"/>
+    </linearGradient>
+    <radialGradient id="gFace" cx=".5" cy=".4" r=".75">
+      <stop offset="0" stop-color="#fffdfb"/><stop offset=".7" stop-color="#fff0f4"/><stop offset="1" stop-color="#ffd3e1"/>
+    </radialGradient>
+    <radialGradient id="gFaceBot" cx=".5" cy=".4" r=".8">
+      <stop offset="0" stop-color="#ffd9e5"/><stop offset="1" stop-color="#ff9fbd"/>
+    </radialGradient>
+    <linearGradient id="gPlateEdge" x1="0" x2="1"><stop offset="0" stop-color="#c9a3b1"/><stop offset=".5" stop-color="#f7dde6"/><stop offset="1" stop-color="#b98c9c"/></linearGradient>
+    <radialGradient id="gPlate" cx=".5" cy=".45" r=".7"><stop offset="0" stop-color="#fffafb"/><stop offset="1" stop-color="#f1c6d4"/></radialGradient>
+    <radialGradient id="gPearl" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#f3d4df"/></radialGradient>
+    <radialGradient id="gStraw" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#ff6a7f"/><stop offset="1" stop-color="#d1123d"/></radialGradient>
+    <filter id="blur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+  </defs>
+
+  <!-- sparkles around the cake -->
+  <path class="twinkle" transform="translate(26,70) scale(1.0)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(318,64) scale(0.9)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(14,168) scale(0.7)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(328,172) scale(0.8)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(70,24) scale(0.8)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(280,28) scale(1.1)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(300,120) scale(0.6)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/><path class="twinkle" transform="translate(40,120) scale(0.6)" fill="#fff" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5Z"/>
+
+  <!-- plate -->
+  <ellipse cx="170" cy="266" rx="150" ry="9" fill="#000" opacity=".35" filter="url(#blur)"/>
+  <ellipse cx="170" cy="247" rx="164" ry="27" fill="url(#gPlateEdge)"/>
+  <ellipse cx="170" cy="240" rx="164" ry="27" fill="url(#gPlate)"/>
+  <ellipse cx="170" cy="240" rx="146" ry="21" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/>
+
+  <!-- bottom tier -->
+  <path d="M45,168 L45,226 A125,32 0 0 0 295,226 L295,168 Z" fill="url(#gSideBot)"/>
+  <rect x="155.8" y="235.2" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(166 159.3 236.4)"/><rect x="155.7" y="244.9" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(34 159.2 246.1)"/><rect x="161.1" y="237.0" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(34 164.6 238.2)"/><rect x="122.5" y="217.7" width="7" height="2.4" rx="1.2" fill="#7df9ff" transform="rotate(146 126.0 218.9)"/><rect x="196.6" y="235.5" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(71 200.1 236.7)"/><rect x="201.0" y="235.9" width="7" height="2.4" rx="1.2" fill="#ffffff" transform="rotate(28 204.5 237.1)"/><rect x="240.8" y="212.6" width="7" height="2.4" rx="1.2" fill="#ffd166" transform="rotate(6 244.3 213.8)"/><rect x="188.8" y="242.0" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(59 192.3 243.2)"/><rect x="243.2" y="227.2" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(115 246.7 228.4)"/><rect x="55.5" y="202.3" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(118 59.0 203.5)"/><rect x="278.0" y="232.1" width="7" height="2.4" rx="1.2" fill="#7df9ff" transform="rotate(151 281.5 233.3)"/><rect x="111.4" y="238.5" width="7" height="2.4" rx="1.2" fill="#ffffff" transform="rotate(92 114.9 239.7)"/><rect x="70.2" y="230.5" width="7" height="2.4" rx="1.2" fill="#ff2d6f" transform="rotate(72 73.7 231.7)"/><rect x="141.1" y="247.7" width="7" height="2.4" rx="1.2" fill="#ffffff" transform="rotate(153 144.6 248.9)"/><rect x="102.3" y="242.9" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(9 105.8 244.1)"/><rect x="274.1" y="214.2" width="7" height="2.4" rx="1.2" fill="#7df9ff" transform="rotate(13 277.6 215.4)"/><rect x="99.0" y="234.0" width="7" height="2.4" rx="1.2" fill="#ff2d6f" transform="rotate(61 102.5 235.2)"/><rect x="129.0" y="247.1" width="7" height="2.4" rx="1.2" fill="#ffffff" transform="rotate(136 132.5 248.3)"/><rect x="84.6" y="232.3" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(2 88.1 233.5)"/><rect x="233.0" y="217.8" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(101 236.5 219.0)"/><rect x="168.5" y="249.3" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(139 172.0 250.5)"/><rect x="198.7" y="219.6" width="7" height="2.4" rx="1.2" fill="#ffd166" transform="rotate(76 202.2 220.8)"/><rect x="54.6" y="227.6" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(175 58.1 228.8)"/><rect x="122.6" y="244.0" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(38 126.1 245.2)"/>
+  <ellipse cx="170" cy="168" rx="125" ry="32" fill="url(#gFaceBot)"/>
+  <path d="M45,168 A125,32 0 0 0 295,168" fill="none" stroke="#fff4ee" stroke-width="11" stroke-linecap="round"/>
+  <path d="M49.5,180.1 L49.5,199.7 A6.5,6.5 0 0 0 62.5,199.7 L62.5,180.1 Z" fill="#fff4ee"/><path d="M80.3,190.4 L80.3,202.8 A4.6,4.6 0 0 0 89.5,202.8 L89.5,190.4 Z" fill="#fff4ee"/><path d="M107.7,195.4 L107.7,217.1 A4.5,4.5 0 0 0 116.7,217.1 L116.7,195.4 Z" fill="#fff4ee"/><path d="M138.9,198.3 L138.9,208.5 A5.3,5.3 0 0 0 149.5,208.5 L149.5,198.3 Z" fill="#fff4ee"/><path d="M162.9,199.0 L162.9,207.5 A5.8,5.8 0 0 0 174.5,207.5 L174.5,199.0 Z" fill="#fff4ee"/><path d="M189.4,198.3 L189.4,209.1 A5.7,5.7 0 0 0 200.9,209.1 L200.9,198.3 Z" fill="#fff4ee"/><path d="M218.0,195.8 L218.0,206.4 A6.2,6.2 0 0 0 230.3,206.4 L230.3,195.8 Z" fill="#fff4ee"/><path d="M245.0,191.4 L245.0,205.9 A5.8,5.8 0 0 0 256.5,205.9 L256.5,191.4 Z" fill="#fff4ee"/><path d="M269.8,184.1 L269.8,206.9 A5.7,5.7 0 0 0 281.3,206.9 L281.3,184.1 Z" fill="#fff4ee"/>
+  <circle cx="294.7" cy="170.2" r="3.4" fill="url(#gPearl)"/><circle cx="292.7" cy="174.1" r="3.4" fill="url(#gPearl)"/><circle cx="288.9" cy="177.9" r="3.4" fill="url(#gPearl)"/><circle cx="283.3" cy="181.5" r="3.4" fill="url(#gPearl)"/><circle cx="276.0" cy="185.0" r="3.4" fill="url(#gPearl)"/><circle cx="267.1" cy="188.1" r="3.4" fill="url(#gPearl)"/><circle cx="256.8" cy="191.0" r="3.4" fill="url(#gPearl)"/><circle cx="245.2" cy="193.6" r="3.4" fill="url(#gPearl)"/><circle cx="232.5" cy="195.7" r="3.4" fill="url(#gPearl)"/><circle cx="218.8" cy="197.5" r="3.4" fill="url(#gPearl)"/><circle cx="204.5" cy="198.8" r="3.4" fill="url(#gPearl)"/><circle cx="189.6" cy="199.6" r="3.4" fill="url(#gPearl)"/><circle cx="174.4" cy="200.0" r="3.4" fill="url(#gPearl)"/><circle cx="159.1" cy="199.9" r="3.4" fill="url(#gPearl)"/><circle cx="144.0" cy="199.3" r="3.4" fill="url(#gPearl)"/><circle cx="129.3" cy="198.3" r="3.4" fill="url(#gPearl)"/><circle cx="115.2" cy="196.8" r="3.4" fill="url(#gPearl)"/><circle cx="101.9" cy="194.8" r="3.4" fill="url(#gPearl)"/><circle cx="89.7" cy="192.5" r="3.4" fill="url(#gPearl)"/><circle cx="78.6" cy="189.8" r="3.4" fill="url(#gPearl)"/><circle cx="68.9" cy="186.8" r="3.4" fill="url(#gPearl)"/><circle cx="60.7" cy="183.5" r="3.4" fill="url(#gPearl)"/><circle cx="54.1" cy="180.0" r="3.4" fill="url(#gPearl)"/><circle cx="49.3" cy="176.3" r="3.4" fill="url(#gPearl)"/><circle cx="46.2" cy="172.5" r="3.4" fill="url(#gPearl)"/>
+
+  <!-- top tier -->
+  <path d="M88,108 L88,160 A82,24 0 0 0 252,160 L252,108 Z" fill="url(#gSideTop)"/>
+  <rect x="184.6" y="166.7" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(124 188.1 167.9)"/><rect x="220.0" y="162.5" width="7" height="2.4" rx="1.2" fill="#ffffff" transform="rotate(76 223.5 163.7)"/><rect x="111.8" y="160.4" width="7" height="2.4" rx="1.2" fill="#7df9ff" transform="rotate(46 115.3 161.6)"/><rect x="195.1" y="160.2" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(148 198.6 161.4)"/><rect x="165.2" y="166.7" width="7" height="2.4" rx="1.2" fill="#ffffff" transform="rotate(167 168.7 167.9)"/><rect x="114.2" y="160.4" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(118 117.7 161.6)"/><rect x="182.5" y="161.7" width="7" height="2.4" rx="1.2" fill="#ffd166" transform="rotate(165 186.0 162.9)"/><rect x="201.4" y="155.8" width="7" height="2.4" rx="1.2" fill="#ffd166" transform="rotate(74 204.9 157.0)"/><rect x="105.0" y="152.0" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(66 108.5 153.2)"/><rect x="232.7" y="148.7" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(25 236.2 149.9)"/><rect x="233.8" y="159.0" width="7" height="2.4" rx="1.2" fill="#b388ff" transform="rotate(124 237.3 160.2)"/><rect x="229.1" y="159.5" width="7" height="2.4" rx="1.2" fill="#ffe3ec" transform="rotate(166 232.6 160.7)"/>
+  <path d="M88,108 A82,24 0 0 0 252,108" fill="none" stroke="#fffdfb" stroke-width="10" stroke-linecap="round"/>
+  <path d="M91.7,118.5 L91.7,133.3 A6.3,6.3 0 0 0 104.3,133.3 L104.3,118.5 Z" fill="#fffdfb"/><path d="M123.1,127.5 L123.1,143.3 A4.5,4.5 0 0 0 132.2,143.3 L132.2,127.5 Z" fill="#fffdfb"/><path d="M146.5,130.4 L146.5,140.6 A6.0,6.0 0 0 0 158.4,140.6 L158.4,130.4 Z" fill="#fffdfb"/><path d="M177.8,130.7 L177.8,145.2 A4.7,4.7 0 0 0 187.1,145.2 L187.1,130.7 Z" fill="#fffdfb"/><path d="M203.5,128.0 L203.5,143.3 A6.3,6.3 0 0 0 216.1,143.3 L216.1,128.0 Z" fill="#fffdfb"/><path d="M230.8,120.9 L230.8,138.7 A6.1,6.1 0 0 0 242.9,138.7 L242.9,120.9 Z" fill="#fffdfb"/>
+  <ellipse cx="170" cy="108" rx="82" ry="24" fill="url(#gFace)"/>
+  <ellipse cx="170" cy="108" rx="82" ry="24" fill="none" stroke="#ffc9da" stroke-width="1.2"/>
+  <circle cx="251.2" cy="111.3" r="3" fill="url(#gPearl)"/><circle cx="247.1" cy="116.2" r="3" fill="url(#gPearl)"/><circle cx="239.5" cy="120.7" r="3" fill="url(#gPearl)"/><circle cx="229.0" cy="124.7" r="3" fill="url(#gPearl)"/><circle cx="215.9" cy="127.9" r="3" fill="url(#gPearl)"/><circle cx="200.7" cy="130.3" r="3" fill="url(#gPearl)"/><circle cx="184.2" cy="131.6" r="3" fill="url(#gPearl)"/><circle cx="167.1" cy="132.0" r="3" fill="url(#gPearl)"/><circle cx="150.2" cy="131.3" r="3" fill="url(#gPearl)"/><circle cx="134.1" cy="129.6" r="3" fill="url(#gPearl)"/><circle cx="119.5" cy="126.9" r="3" fill="url(#gPearl)"/><circle cx="107.2" cy="123.4" r="3" fill="url(#gPearl)"/><circle cx="97.6" cy="119.3" r="3" fill="url(#gPearl)"/><circle cx="91.2" cy="114.6" r="3" fill="url(#gPearl)"/>
+
+  <!-- strawberries -->
+  <g transform="translate(62,172) scale(1.1)"><path d="M0,-7 C7,-7 9,0 6,7 C3,12 -3,12 -6,7 C-9,0 -7,-7 0,-7Z" fill="url(#gStraw)"/><ellipse cx="-2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="0" cy="3" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="-3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><ellipse cx="3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><path d="M0,-7 L-4,-10 L-1,-8.5 L0,-12 L1,-8.5 L4,-10 Z" fill="#3fa65b"/></g><g transform="translate(278,172) scale(1.1)"><path d="M0,-7 C7,-7 9,0 6,7 C3,12 -3,12 -6,7 C-9,0 -7,-7 0,-7Z" fill="url(#gStraw)"/><ellipse cx="-2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="0" cy="3" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="-3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><ellipse cx="3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><path d="M0,-7 L-4,-10 L-1,-8.5 L0,-12 L1,-8.5 L4,-10 Z" fill="#3fa65b"/></g><g transform="translate(118,196) scale(1.0)"><path d="M0,-7 C7,-7 9,0 6,7 C3,12 -3,12 -6,7 C-9,0 -7,-7 0,-7Z" fill="url(#gStraw)"/><ellipse cx="-2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="0" cy="3" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="-3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><ellipse cx="3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><path d="M0,-7 L-4,-10 L-1,-8.5 L0,-12 L1,-8.5 L4,-10 Z" fill="#3fa65b"/></g><g transform="translate(170,203) scale(1.1)"><path d="M0,-7 C7,-7 9,0 6,7 C3,12 -3,12 -6,7 C-9,0 -7,-7 0,-7Z" fill="url(#gStraw)"/><ellipse cx="-2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="0" cy="3" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="-3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><ellipse cx="3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><path d="M0,-7 L-4,-10 L-1,-8.5 L0,-12 L1,-8.5 L4,-10 Z" fill="#3fa65b"/></g><g transform="translate(222,196) scale(1.0)"><path d="M0,-7 C7,-7 9,0 6,7 C3,12 -3,12 -6,7 C-9,0 -7,-7 0,-7Z" fill="url(#gStraw)"/><ellipse cx="-2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="2.5" cy="-1" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="0" cy="3" rx="0.9" ry="1.4" fill="#ffe3b3"/><ellipse cx="-3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><ellipse cx="3" cy="5" rx="0.8" ry="1.2" fill="#ffe3b3"/><path d="M0,-7 L-4,-10 L-1,-8.5 L0,-12 L1,-8.5 L4,-10 Z" fill="#3fa65b"/></g>
+</svg>
+        <div class="tap-hint"></div>
+      </div>
+
+      <div class="chip" id="chip">🕯️ <span id="chipN">0</span> lit</div>
+
+      <div class="meter-wrap" id="meterWrap">
+        <div class="meter" id="meter"><i></i><b></b></div>
+        <span class="meter-label">blow past the line 💨</span>
+      </div>
+
+      <button class="blow-btn" id="blowBtn" type="button" hidden>💨 Tap to blow</button>
+    </section>
+
+    <div class="cta">
+      <a href="Nikolet.html" class="nav-button">CLICK TO PROCEED</a>
+    </div>
+
+    <footer class="quote">
+      <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg><span>If looking into your eyes meant being cast into hell&nbsp; —— &nbsp;I would burn in solitude, for i had just seen heaven</span><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
